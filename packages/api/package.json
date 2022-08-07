@@ -1,12 +1,12 @@
 {
-  "name": "@juno-mono/api",
+  "name": "@mono/api",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
     "build": "tsc",
-    "@juno-mono/shared": "*"
+    "@mono/shared": "*"
   },
   "dependencies": {
     "@trpc/server": "^9.26.2",

@@ -1,35 +1,32 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
-import * as trpcExpress from '@trpc/server/adapters/express';
-import { appRouter } from "./trpc";
-
+import { trpcMiddleware } from "./trpc";
 
 const app: Application = express();
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 
-// Body parsing Middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
+// TODO Currently, set to the port of the vite app, should be using process.env.CLIENT_URL
 app.use(
-  '/trpc',
-  trpcExpress.createExpressMiddleware({
-    router: appRouter,
+  cors({
+    origin: "http://localhost:3000",
   })
 );
 
+// Body parsing Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// The trpc middleware - routes all requests that hit the /trpc endpoint to
+// the trpc router, alll other requests will go to the "standard" express router
+app.use("/trpc", trpcMiddleware);
+
+// The "standard" express router
 app.get("/", async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).send({
     message: "Hello World!",
   });
 });
 
-try {
-  app.listen(port, (): void => {
-    console.log(`Connected successfully on port ${port}`);
-  });
-} catch (error: any) {
-  console.error(`Error occured: ${error.message}`);
-}
-
+app.listen(PORT, (): void =>
+  console.log(`App is listening on port: ${PORT} 🚀`)
+);

@@ -1,5 +1,5 @@
 {
-  "name": "@juno-mono/client",
+  "name": "@mono/client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,10 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mono/shared": "*",
+    "@mono/ui": "*",
+    "@mono/api": "*",
+    "@trpc/client": "^9.26.2",
+    "@trpc/react": "^9.26.2",
+    "@trpc/server": "^9.26.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@juno-mono/shared": "*",
-    "@juno-mono/ui": "*"
+    "react-query": "3"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",
