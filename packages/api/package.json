@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "@juno-mono/shared": "*"
   },
   "dependencies": {
     "@types/cors": "^2.8.12",
