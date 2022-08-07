@@ -9,10 +9,12 @@
     "@juno-mono/shared": "*"
   },
   "dependencies": {
+    "@trpc/server": "^9.26.2",
     "@types/cors": "^2.8.12",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "zod": "^3.17.10"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12"
