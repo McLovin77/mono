@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
-    "build": "tsc",
-    "@mono/shared": "*"
+    "build": "tsc"
   },
   "dependencies": {
     "@trpc/server": "^9.26.2",

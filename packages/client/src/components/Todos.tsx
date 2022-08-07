@@ -5,32 +5,10 @@ import { v4 as uuid } from "uuid";
 import { Button } from "@mono/ui";
 
 const Todos = () => {
-  const [username, setUsername] = useState("");
   const [title, setTitle] = useState("");
   const itemsQuery = trpc.useQuery(["items.getItems"]);
   const addItemMutation = trpc.useMutation(["items.addItem"]);
   const deleteItemMutation = trpc.useMutation(["items.deleteItem"]);
-  const authToken = localStorage.getItem("auth-token");
-
-  if (!authToken)
-    return (
-      <>
-        <Typography>Please sign in</Typography>
-        <input
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-        />
-        <button
-          onClick={() => {
-            localStorage.setItem("auth-token", username);
-            window.location.reload();
-          }}
-        >
-          Sign in
-        </button>
-      </>
-    );
 
   return (
     <div>
@@ -45,8 +23,8 @@ const Todos = () => {
             },
             {
               onSuccess: async () => {
-                await itemsQuery.refetch();
                 setTitle("");
+                await itemsQuery.refetch();
               },
             }
           );
@@ -80,15 +58,6 @@ const Todos = () => {
           </li>
         ))}
       </ul>
-      <button
-        type="button"
-        onClick={() => {
-          localStorage.removeItem("auth-token");
-          window.location.reload();
-        }}
-      >
-        Sign out
-      </button>
     </div>
   );
 };
