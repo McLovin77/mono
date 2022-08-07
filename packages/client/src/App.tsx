@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { hello, SharedType } from "@juno-mono/shared";
 import { Button } from "@juno-mono/ui";
-import "./App.css";
+import { Typography } from "@mui/material";
 
 const example: SharedType = {
   age: 24,
@@ -28,21 +28,21 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React + {hello()}</h1>
+      <Typography variant='h4'>Vite + React + {hello()}</Typography>
 
       <div style={{ width: "100%", textAlign: "left" }}>
-        <h3>
+        <Typography gutterBottom>
           This button is imported from <code>@juno-mono/ui</code>
-        </h3>
-        <Button>Shared button!</Button>
-        <h3>
+        </Typography>
+        <Button sx={{mb: 4}} variant='contained' color='primary'>Shared button!</Button>
+        <Typography gutterBottom>
           The type of this example imported from <code>@juno-mono/shared</code>
-        </h3>
+        </Typography>
         <pre>{JSON.stringify(example, null, 2)}</pre>
-        <h3>
+        <Typography gutterBottom>
           This response is from the API thats running concurrently{" "}
           <code>@juno-mono/api</code>
-        </h3>
+        </Typography>
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </div>
     </div>
